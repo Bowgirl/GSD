@@ -5,6 +5,9 @@
  */
 package GUI;
 
+import java.io.File;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Andrea
@@ -57,6 +60,11 @@ public class GSD extends javax.swing.JFrame {
       CompileFileLocation.setText("Compile File Location");
 
       CompileFileBrowseBtn.setText("Browse");
+      CompileFileBrowseBtn.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            CompileFileBrowseBtnActionPerformed(evt);
+         }
+      });
 
       javax.swing.GroupLayout CompileLoadPanelLayout = new javax.swing.GroupLayout(CompileLoadPanel);
       CompileLoadPanel.setLayout(CompileLoadPanelLayout);
@@ -213,6 +221,11 @@ public class GSD extends javax.swing.JFrame {
       ResultsFileLocation.setText("Result File Location");
 
       ResultFileBrowseBtn.setText("Browse");
+      ResultFileBrowseBtn.addActionListener(new java.awt.event.ActionListener() {
+         public void actionPerformed(java.awt.event.ActionEvent evt) {
+            ResultFileBrowseBtnActionPerformed(evt);
+         }
+      });
 
       javax.swing.GroupLayout ResultSavePanelLayout = new javax.swing.GroupLayout(ResultSavePanel);
       ResultSavePanel.setLayout(ResultSavePanelLayout);
@@ -269,6 +282,26 @@ public class GSD extends javax.swing.JFrame {
    private void TaskBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TaskBtnActionPerformed
       // TODO add your handling code here:
    }//GEN-LAST:event_TaskBtnActionPerformed
+
+   private void CompileFileBrowseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompileFileBrowseBtnActionPerformed
+      JFileChooser fc = new JFileChooser();
+      int returnVal = fc.showOpenDialog(GSD.this);
+      
+      if (returnVal == JFileChooser.APPROVE_OPTION) {
+         File file = fc.getSelectedFile();
+         CompileFileLocation.setText(file.getPath());
+      }
+   }//GEN-LAST:event_CompileFileBrowseBtnActionPerformed
+
+   private void ResultFileBrowseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResultFileBrowseBtnActionPerformed
+      JFileChooser fc = new JFileChooser();
+      int returnVal = fc.showSaveDialog(GSD.this);
+      
+      if (returnVal == JFileChooser.APPROVE_OPTION) {
+         File file = fc.getSelectedFile();
+         ResultsFileLocation.setText(file.getPath());
+      }
+   }//GEN-LAST:event_ResultFileBrowseBtnActionPerformed
 
    /**
     * @param args the command line arguments
